@@ -20,10 +20,10 @@ var pJS = function(tag_id, params){
     },
     particles: {
       number: {
-        value: 400,
+        value: 10,
         density: {
-          enable: true,
-          value_area: 800
+          enable: false,
+          value_area: 20
         }
       },
       color: {
@@ -1537,5 +1537,21 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
     }
   };
   xhr.send();
+
+
+
+
+// Get total particles
+let particles = window['pJSDom'][0].pJS.particles.array.length
+
+// Here set limit value
+if(particles == 25){
+  // Get particles array
+  let array = window['pJSDom'][0].pJS.particles.array
+  // Remove (starting from zero) 16 particles starting from 5
+  array.splice(5,15)
+  // Set new particles array
+  window['pJSDom'][0].pJS.particles.array = array
+}
 
 };
